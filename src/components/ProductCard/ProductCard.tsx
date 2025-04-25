@@ -100,15 +100,15 @@ export default function ProductCard(props: ProductCardProps) {
             )}
             <div className='cio-item-name'>{itemName}</div>
             {productSwatch && <ProductSwatch swatchObject={productSwatch} />}
+            <button
+              className='cio-add-to-cart-button'
+              type='button'
+              onClick={(e) =>
+                onAddToCart(e, item, itemPrice, productSwatch?.selectedVariation?.variationId)
+              }>
+              Add to Cart
+            </button>
           </div>
-          <button
-            className='cio-add-to-cart-button'
-            type='button'
-            onClick={(e) =>
-              onAddToCart(e, item, itemPrice, productSwatch?.selectedVariation?.variationId)
-            }>
-            Add to Cart
-          </button>
         </a>
       )}
     </>
