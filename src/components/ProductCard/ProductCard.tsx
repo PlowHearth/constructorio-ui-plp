@@ -109,6 +109,9 @@ export default function ProductCard(props: ProductCardProps) {
               Add to Cart
             </button>
           </div>
+          <div className='pwr-category-snippets'>
+            <div id={`snippet-${item.itemId}`} />
+          </div>
         </a>
       )}
     </>
