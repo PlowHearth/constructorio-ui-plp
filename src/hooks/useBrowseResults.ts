@@ -81,7 +81,10 @@ export default function useBrowseResults(
     );
   }
 
-  const { cioClient } = contextValue;
+  const {
+    cioClient,
+    callbacks: { onPwr },
+  } = contextValue;
 
   // Throw error if client is not provided and window is defined (i.e. not SSR)
   if (!cioClient && typeof window !== 'undefined') {
@@ -124,6 +127,9 @@ export default function useBrowseResults(
   useEffect(() => {
     if (!initialBrowseResponse || !isFirstRender) {
       refetch();
+      if (onPwr) {
+        onPwr();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
