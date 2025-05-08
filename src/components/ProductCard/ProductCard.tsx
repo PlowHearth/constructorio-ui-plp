@@ -95,11 +95,14 @@ export default function ProductCard(props: ProductCardProps) {
           </div>
 
           <div className='cio-content'>
+            <div className='cio-item-name'>{itemName}</div>
+            {productSwatch && <ProductSwatch swatchObject={productSwatch} />}
             {Number(itemPrice) >= 0 && (
               <div className='cio-item-price'>{formatPrice(itemPrice)}</div>
             )}
-            <div className='cio-item-name'>{itemName}</div>
-            {productSwatch && <ProductSwatch swatchObject={productSwatch} />}
+            <div className='pwr-category-snippets'>
+              <div id={`snippet-${item.itemId}`} />
+            </div>
             <button
               className='cio-add-to-cart-button'
               type='button'
@@ -108,9 +111,6 @@ export default function ProductCard(props: ProductCardProps) {
               }>
               Add to Cart
             </button>
-          </div>
-          <div className='pwr-category-snippets'>
-            <div id={`snippet-${item.itemId}`} />
           </div>
         </a>
       )}
