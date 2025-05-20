@@ -107,7 +107,7 @@ export default function ProductCard(props: ProductCardProps) {
               <button
                 className='cio-add-to-cart-button btn btn--primary w-full'
                 data-add-to-cart-text='Add to Cart'
-                name='add'
+                id={`quick-add-button-${item.itemId}`}
                 aria-haspopup='dialog'
                 type='button'
                 onClick={(e) =>
