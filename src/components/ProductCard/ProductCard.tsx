@@ -87,14 +87,14 @@ export default function ProductCard(props: ProductCardProps) {
       ) : (
         <a
           {...cnstrcData}
-          className='cio-product-card'
+          className='cio-product-card card card--product h-full card--product-contained relative flex'
           href={itemUrl}
           onClick={(e) => onClick(e, item, productSwatch?.selectedVariation?.variationId)}>
           <div className='cio-image-container'>
             <img alt={itemName} src={itemImageUrl} className='cio-image' />
           </div>
 
-          <div className='cio-content'>
+          <div className='cio-content card__info-container flex flex-col flex-auto relative'>
             <div className='cio-item-name'>{itemName}</div>
             {productSwatch && <ProductSwatch swatchObject={productSwatch} />}
             {Number(itemPrice) >= 0 && (
@@ -103,14 +103,34 @@ export default function ProductCard(props: ProductCardProps) {
             <div className='pwr-category-snippets'>
               <div id={`snippet-${item.itemId}`} />
             </div>
-            <button
-              className='cio-add-to-cart-button'
-              type='button'
-              onClick={(e) =>
-                onAddToCart(e, item, itemPrice, productSwatch?.selectedVariation?.variationId)
-              }>
-              Add to Cart
-            </button>
+            <div className='card__quick-add mob:card__quick-add--below'>
+              <button
+                className='cio-add-to-cart-button btn btn--primary w-full'
+                data-add-to-cart-text='Add to Cart'
+                name='add'
+                aria-haspopup='dialog'
+                type='button'
+                onClick={(e) =>
+                  onAddToCart(e, item, itemPrice, productSwatch?.selectedVariation?.variationId)
+                }>
+                <span className='quick-add-btn-icon'>
+                  <span className='visually-hidden'>Add to Cart</span>
+                  <svg
+                    width='24'
+                    height='24'
+                    viewBox='0 0 24 24'
+                    fill='currentColor'
+                    aria-hidden='true'
+                    focusable='false'
+                    role='presentation'
+                    className='icon'>
+                    <path d='M12.12 20.44H5.6V9.56h12.8v3.73c.06.4.4.69.8.7.44 0 .8-.35.8-.8v-4.5a.792.792 0 0 0-.8-.69H17V6.5C16.9 4 14.7 2 12 2S7 4.09 7 6.67V8H4.71c-.4.04-.71.37-.71.78v12.53a.8.8 0 0 0 .8.69h7.43c.38-.06.67-.39.67-.78 0-.43-.35-.78-.78-.78ZM8.66 6.67c0-1.72 1.49-3.11 3.33-3.11s3.33 1.39 3.33 3.11V8H8.65V6.67Z' />
+                    <path d='M20 17.25h-2.4v-2.5a.817.817 0 0 0-.8-.7c-.44 0-.8.36-.8.8v2.4h-2.5c-.4.06-.7.4-.7.8 0 .44.36.8.8.8H16v2.5c.06.4.4.7.8.7.44 0 .8-.36.8-.8v-2.4h2.5c.4-.06.69-.4.7-.8 0-.44-.35-.8-.8-.8Z' />
+                  </svg>
+                </span>
+                <span className='quick-add-btn-text'>Add to Cart</span>
+              </button>
+            </div>
           </div>
         </a>
       )}
