@@ -34,7 +34,7 @@ export interface ProductCardRenderProps extends ProductCardProps {
     event: React.MouseEvent,
     item: Item,
     revenue: number,
-    selectedVariation: string
+    selectedVariation: string,
   ) => void;
   /**
    * Callback to run on Product Card Click.
@@ -102,7 +102,7 @@ export default function ProductCard(props: ProductCardProps) {
                 <div
                   className={concatStyles(
                     'cio-item-price',
-                    hasSalesPrice && 'cio-item-price-strikethrough'
+                    hasSalesPrice && 'cio-item-price-strikethrough',
                   )}>
                   {formatPrice(itemPrice)}
                 </div>
